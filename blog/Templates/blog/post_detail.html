@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<div style = "margin: 20px">
+		<h3 style = "font-size: 30px; padding:0">{{ object.title }}</h3>
+		<p style = "display: block; font-size: 15px">{{ object.date_posted|date:"F d, Y" }}</p><a href="{% url 'user-posts' object.author.username %}"><p style = "display: block; font-size: 15px">{{ object.author.username }}</p></a>
+		<h5 style= "font-size: 20px; font-weight: normal">{{ object.content }}</h5>
+		{% if user == object.author %}
+		<a href = "{% url 'post-update' object.id %}"><button class="btn btn-primary" style = "margin-bottom: 4px">Update</button></a>
+		<a href = "{% url 'post-delete' object.id %}"><button class="btn btn-danger" style = "margin-bottom: 4px">Delete</button></a>
+		{% endif %}
+	</div>
+{% endblock content %}

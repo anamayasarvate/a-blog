@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method = "POST" style = "display:inline;">
+	{% csrf_token %}
+	<legend>Are you sure you want to delete the post {{ object.title }}</legend>
+	<button class="btn btn-danger" type = "submit">Delete</button>
+</form>
+<a href="{% url 'post-detail' object.id %}"><button class="btn btn-primary">Cancel</button></a>
+
+{% endblock content %}

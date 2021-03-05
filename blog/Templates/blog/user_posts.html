@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h1>Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+{% for object in object_list %}
+	<div style = "margin: 20px">
+		<a href = "{% url 'post-detail' object.id %}"><h3 style = "font-size: 30px; padding:0">{{ object.title }}</h3></a>
+		<p style = "display: block; font-size: 15px">{{ object.date_posted|date:"F d, Y" }}</p>
+		<a href="{% url 'user-posts' object.author.username %}"><p style = "display: block; font-size: 15px">{{ object.author.username }}</p></a>
+		<h5 style= "font-size: 20px; font-weight: normal">{{ object.content }}</h5>
+	</div>
+{% endfor %}
+{% if is_paginated %}
+
+	{% if page_obj.has_previous %}
+		<a href="?page=1" class = "btn btn-outline-info mb-4" >First</a>
+		<a href="?page={{ page_obj.previous_page_number }}" class = "btn btn-outline-info mb-4" >Previous</a>
+	{% endif %}
+
+	{% for num in page_obj.paginator.page_range %}
+		{% if num == page_obj.number %}
+			<a href="?page={{ num }}" class = "btn btn-info mb-4" >{{ num }}</a>
+		{% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+			<a href="?page={{ num }}" class = "btn btn-outline-info mb-4" >{{ num }}</a>
+		{% endif %}
+	{% endfor %}
+
+	{% if page_obj.has_next %}
+			<a href="?page={{ page_obj.next_page_number }}" class = "btn btn-outline-info mb-4" >Next</a>
+			<a href="?page={{ page_obj.paginator.num_pages }}" class = "btn btn-outline-info mb-4" >Last</a>
+	{% endif %}
+
+{% endif %}
+{% endblock content %}

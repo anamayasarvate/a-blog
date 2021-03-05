@@ -1,0 +1,78 @@
+body
+{
+	margin:0;
+	padding:0;
+	
+}
+
+.container
+{
+	width:80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.main-menu
+{
+	margin:0;
+	padding:0;
+	background-color: #90EE90;
+
+}
+
+.main-menu h1 a
+{
+	text-decoration: none
+	padding:0;
+	margin:0;
+	color: #fff;
+}
+
+.main-menu h1 a:hover
+{
+	text-decoration: none;
+	color: #C0C0C0;
+}
+
+.main-menu h1 
+{
+	color: #fff;
+	font-size: 30px;
+	padding:0;
+	margin-left:20px;
+}
+
+.main-menu-shift ul
+{
+	margin:0;
+	padding:0;
+	list-style:none;
+	padding-left: 1200px;
+
+}
+
+.main-menu-shift ul li
+{
+	display: inline;
+
+}
+
+.main-menu-shift ul li a:hover
+{
+	color: #C0C0C0;
+
+}
+
+.main-menu-shift a
+{
+	color:#fff;
+	text-decoration: none;
+	font-size:18px;
+	padding-right:15px;
+}
+
+
+.main-menu-shift a:visited
+{
+	color: #fff;
+}
